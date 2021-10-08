@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/total_pessoas"
+            android:textSize="20sp"
+            android:textColor="@color/blue">
+        </TextView>
+
+        <EditText
+            android:id="@+id/table_totalpessoas"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="91dp"
+            android:gravity="right"
+            android:text="@string/qtd_default">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/dias_viajem"
+            android:textSize="20sp"
+            android:textColor="@color/blue">
+        </TextView>
+
+        <EditText
+            android:id="@+id/table_duracao_viagem"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="right"
+            android:text="@string/qtd_default">
+
+        </EditText>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:text="@string/table_gasolina">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="100dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_valor">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_check">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:stretchColumns="2">
+
+                <TableRow>
+                    <TextView
+                        android:text="Total estimado de Quilometros"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_totalKM"
+                        android:layout_column="1"
+                        android:gravity="right"
+                        android:text="@string/qtd_default"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/check_gasolina"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+
+                <TableRow>
+                    <TextView
+                        android:text="Media de quilômetros por litro"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_mediaKM_LT"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        android:text="@string/qtd_default"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="Custo médio por litro"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+
+                    <EditText
+                        android:id="@+id/table_custoMedioLT"
+                        android:layout_width="100dp"
+                        android:gravity="right"
+                        android:text="@string/valor_default"/>
+                </TableRow>
+
+
+                <TableRow>
+
+                    <TextView
+                        android:text="Total de veículos"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_total_veiculos"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        android:text="@string/qtd_default"
+                        />
+                </TableRow>
+
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/blue" />
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/valor_total"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/total_gasolina"
+                        android:text="R$"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                </TableRow>
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/blue" />
+
+            </TableLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:text="@string/table_tarifa">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_valor">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="@string/table_check"
+                android:textAlignment="center"
+                android:textColor="@color/blue"
+                android:textSize="16sp">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:stretchColumns="2">
+
+                <TableRow>
+                    <TextView
+                        android:text="Custo estimado por pessoa"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_custo_por_pessoa"
+                        android:layout_column="1"
+                        android:gravity="right"
+                        android:text="@string/valor_default"
+                        />
+                    <CheckBox
+                        android:id="@+id/check_tarifaAerea"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+
+                <TableRow>
+                    <TextView
+
+                        android:text="Aluguel de veículo"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_aluguel_veiculo"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        android:text="@string/valor_default"
+                        />
+                </TableRow>
+
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/blue" />
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/valor_total"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/total_tarifaAerea"
+                        android:text="R$"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                </TableRow>
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/blue" />
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:text="@string/table_refeicoes">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="100dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_valor">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_check">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:stretchColumns="2">
+
+                <TableRow>
+                    <TextView
+                        android:text="Custo estimado por refeição"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+
+                    <EditText
+                        android:id="@+id/table_custo_por_refeicao"
+                        android:layout_column="1"
+                        android:gravity="right"
+                        android:text="@string/valor_default"/>
+                    <CheckBox
+                        android:id="@+id/check_refeicoes"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+
+                <TableRow>
+                    <TextView
+
+                        android:text="Refeições por dia"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_custo_refeicao_dia"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        android:text="@string/qtd_default"
+                        />
+                </TableRow>
+
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/blue" />
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/valor_total"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/total_refeicoes"
+                        android:text="R$"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                </TableRow>
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/blue" />
+
+            </TableLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:text="@string/table_hospedagem">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="70dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_valor">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_check">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:stretchColumns="2">
+
+                <TableRow>
+                    <TextView
+                        android:text="Custo médio (por noite)"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_custo_medio_noite"
+                        android:layout_column="1"
+                        android:gravity="right"
+                        android:text="@string/valor_default"
+                        />
+                    <CheckBox
+                        android:id="@+id/check_hospedagem"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+
+                <TableRow>
+                    <TextView
+
+                        android:text="Total de noites"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_total_noites"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        android:text="@string/qtd_default"
+                        />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:text="Total de quartos"
+                        android:layout_marginBottom="3dp"
+                        android:layout_gravity="bottom"/>
+                    <EditText
+                        android:id="@+id/table_total_quartos"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        android:text="@string/qtd_default"
+                        />
+                </TableRow>
+
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/blue" />
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/valor_total"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/total_hospedagem"
+                        android:text="R$"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                </TableRow>
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/blue" />
+
+            </TableLayout>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:text="@string/table_entretenimento">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_valor">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/blue"
+                android:text="@string/table_check">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:stretchColumns="2">
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/edt_descricao_diversos1"
+                        android:layout_width="172dp"
+                        android:gravity="right" />
+
+                    <EditText
+                        android:id="@+id/edt_diversos1"
+                        android:layout_width="79dp"
+                        android:gravity="right"
+                        android:text="@string/valor_default"/>
+                    <CheckBox
+                        android:id="@+id/check_entretenimento1"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edt_descricao_diversos2"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_diversos2"
+                        android:layout_width="79dp"
+                        android:gravity="right"
+                        android:text="@string/valor_default"/>
+                    <CheckBox
+                        android:id="@+id/check_entretenimento2"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edt_descricao_diversos3"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_diversos3"
+                        android:layout_width="79dp"
+                        android:gravity="right"
+                        android:text="@string/valor_default"/>
+                    <CheckBox
+                        android:id="@+id/check_entretenimento3"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+                <TableRow>
+                    <EditText
+                        android:id="@+id/edt_descricao_diversos4"
+                        android:gravity="right"
+                        android:layout_width="100dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_diversos4"
+                        android:layout_width="79dp"
+                        android:gravity="right"
+                        android:text="@string/valor_default"/>
+                    <CheckBox
+                        android:id="@+id/check_entretenimento4"
+                        android:layout_gravity="center" />
+                </TableRow>
+
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/blue" />
+
+                <TableRow>
+                    <TextView
+                        android:text="@string/valor_total"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/total_diversos"
+                        android:text="R$"
+                        android:textStyle="bold"
+                        android:padding="3dip" />
+                </TableRow>
+                <View
+                    android:layout_height="1dip"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/blue" />
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnGravarCusto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="25dp"
+                android:text="@string/gravar"
+                />
+            <Button
+                android:id="@+id/btnSair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:text="@string/voltar"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+

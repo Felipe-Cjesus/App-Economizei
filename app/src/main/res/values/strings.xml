@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CustoViagem</string>
+    <string name="table_valor">VALOR</string>
+    <string name="table_gasolina">GASOLINA</string>
+    <string name="table_tarifa">TARIFA AÉREA</string>
+    <string name="table_refeicoes">REFEIÇÕES</string>
+    <string name="table_hospedagem">HOSPEDAGEM</string>
+    <string name="table_entretenimento">ENTRETENIMENTO</string>
+    <string name="login">Login</string>
+    <string name="login_usuario">Usuário</string>
+    <string name="login_senha">Senha</string>
+    <string name="login_cadastrar">Cadastrar</string>
+    <string name="cadastro_nome">Nome</string>
+    <string name="cadastro_usuario">Usuario</string>
+    <string name="cadastro_senha">Senha</string>
+    <string name="voltar">Sair</string>
+    <string name="gravar">Gravar</string>
+    <string name="cadastro_info">Informe seus dados para cadastro</string>
+    <string name="valor_total">Total</string>
+    <string name="table_check">Adiciona ao valor total?</string>
+    <string name="total_pessoas">Total de viajantes</string>
+    <string name="dias_viajem">Duração da viagem (dias)</string>
+    <string name="valor_default">0.00</string>
+    <string name="qtd_default">0</string>
+</resources>
