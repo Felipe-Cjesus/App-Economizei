@@ -19,6 +19,8 @@ public class CustoViagemDAO extends AbstrataDAO{
             CustoViagemModel.COLUNA_DURACAO,
             CustoViagemModel.COLUNA_VLRTOTAL,
             CustoViagemModel.COLUNA_VLRPESSOA,
+            CustoViagemModel.COLUNA_ORIGEM,
+            CustoViagemModel.COLUNA_DESTINO,
     };
 
     public CustoViagemDAO(final Context contexto) {
@@ -43,6 +45,8 @@ public class CustoViagemDAO extends AbstrataDAO{
             values.put(CustoViagemModel.COLUNA_DURACAO, model.getDuracaoViagem());
             values.put(CustoViagemModel.COLUNA_VLRTOTAL, model.getCustoTotalViagem());
             values.put(CustoViagemModel.COLUNA_VLRPESSOA, model.getCustoTotalPessoa());
+            values.put(CustoViagemModel.COLUNA_ORIGEM, model.getCustoTotalPessoa());
+            values.put(CustoViagemModel.COLUNA_DESTINO, model.getCustoTotalPessoa());
 
             linhasAfetadas = db.insert(CustoViagemModel.TABELA_NOME, null, values);
 
@@ -78,6 +82,8 @@ public class CustoViagemDAO extends AbstrataDAO{
         model.setDuracaoViagem(cursor.getString(2));
         model.setCustoTotalViagem(cursor.getString(3));
         model.setCustoTotalPessoa(cursor.getString(4));
+        model.setOrigem(cursor.getString(5));
+        model.setDestino(cursor.getString(6));
         return model;
     }
 

@@ -11,7 +11,9 @@ public class CustoViagemModel {
             COLUNA_TOTAL_VIAJANTE = "totalViajante",
             COLUNA_DURACAO = "duracaoViagem",
             COLUNA_VLRTOTAL = "custoTotalViagem",
-            COLUNA_VLRPESSOA = "custoTotalPessoa";
+            COLUNA_VLRPESSOA = "custoTotalPessoa",
+            COLUNA_ORIGEM = "origem",
+            COLUNA_DESTINO = "destino";
 
     public static final String
             CREATE_TABLE = "create table "+TABELA_NOME
@@ -21,6 +23,8 @@ public class CustoViagemModel {
             + COLUNA_DURACAO + " text not null "
             + COLUNA_VLRTOTAL + " text not null "
             + COLUNA_VLRPESSOA + " text not null "
+            + COLUNA_ORIGEM + " text not null "
+            + COLUNA_DESTINO + " text not null "
             +");";
 
     public static final String
@@ -37,6 +41,24 @@ public class CustoViagemModel {
     private String duracaoViagem;
     private String custoTotalViagem;
     private String custoTotalPessoa;
+    private String origem;
+    private String destino;
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
 
     public long getId() {
         return id;

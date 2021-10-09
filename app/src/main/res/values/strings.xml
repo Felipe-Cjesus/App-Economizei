@@ -13,8 +13,9 @@
     <string name="cadastro_nome">Nome</string>
     <string name="cadastro_usuario">Usuario</string>
     <string name="cadastro_senha">Senha</string>
-    <string name="voltar">Sair</string>
+    <string name="voltar">Voltar</string>
     <string name="gravar">Gravar</string>
+    <string name="calcular">Calcular</string>
     <string name="cadastro_info">Informe seus dados para cadastro</string>
     <string name="valor_total">Total</string>
     <string name="table_check">Adiciona ao valor total?</string>
@@ -22,4 +23,6 @@
     <string name="dias_viajem">Duração da viagem (dias)</string>
     <string name="valor_default">0.00</string>
     <string name="qtd_default">0</string>
+    <string name="de_onde">De onde</string>
+    <string name="para_onde">Para onde</string>
 </resources>

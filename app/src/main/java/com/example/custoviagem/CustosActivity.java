@@ -19,6 +19,9 @@ import java.text.DecimalFormat;
 
 public class CustosActivity extends AppCompatActivity {
 
+    // origem e destino
+    private EditText table_origem, table_destino;
+
     // Variaveis da tabela de de Gasolina
     private EditText table_totalKM, table_mediaKM_LT, table_custoMedioLT, table_total_veiculos;
 
@@ -40,7 +43,7 @@ public class CustosActivity extends AppCompatActivity {
 
     // Variaveis dos checkbox de todas tabelas
     private CheckBox check_gasolina, check_tarifaAerea, check_refeicoes, check_hospedagem, check_entretenimento1, check_entretenimento2, check_entretenimento3, check_entretenimento4;
-    private Button btnGravarCusto, btnSair;
+    private Button btnCalcularCusto, btnGravar;
     private CustoViagemDAO CustoDAO;
 
     @Override
@@ -50,6 +53,10 @@ public class CustosActivity extends AppCompatActivity {
 
         // Instancia o banco de dados.
         CustoDAO = new CustoViagemDAO(CustosActivity.this);
+
+        // Criação dos componentes. DESTINO E ORIGEM
+        table_origem = findViewById(R.id.table_origem);
+        table_destino = findViewById(R.id.table_destino);
 
         // Criação dos componentes. GASOLINA
         table_totalpessoas = findViewById(R.id.table_totalpessoas);
@@ -96,8 +103,8 @@ public class CustosActivity extends AppCompatActivity {
         total_diversos = (TextView) findViewById(R.id.total_diversos);
 
         // Insert dos custos no banco de dados
-        btnGravarCusto = findViewById(R.id.btnGravarCusto);
-        btnGravarCusto.setOnClickListener(new View.OnClickListener() {
+        btnCalcularCusto = findViewById(R.id.btnCalcularCusto);
+        btnCalcularCusto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -108,6 +115,7 @@ public class CustosActivity extends AppCompatActivity {
                 /**
                  *
                  * Falta fazer o calculo utilizando a formula, para gravar no banco apenas os valores totais
+                 *
                  */
 
 
@@ -138,8 +146,9 @@ public class CustosActivity extends AppCompatActivity {
                 double total_noites = Double.parseDouble(String.valueOf(table_total_noites.getText()));
                 double total_quartos = Double.parseDouble(String.valueOf(table_total_quartos.getText()));
 
-                double custo_diversos = 0;
                 // Custos da tabela Diversos
+                double custo_diversos = 0;
+
                 if(check_entretenimento1.isChecked()){
                     double custo1 = Double.parseDouble(String.valueOf(edt_diversos1.getText()));
                     custo_diversos = custo1;
@@ -166,25 +175,52 @@ public class CustosActivity extends AppCompatActivity {
                 }
 
                 //Variaveis para guardar o valor total dos custos das tabelas
-                double custo_gasolina = ((quilometros / mediaKMLT) * custo_medio_LT) / total_veiculos;
-                double custo_hospedagem = (custo_medio_noite * total_noites) * total_quartos;
-                double custo_tarifaAerea = (custo_estimado_pessoa * total_viajantes) + aluguel_veiculo;
-                double custo_refeicoes = ((refeicoes_dia * total_viajantes) * custo_estimado_refeicao) * qtd_dias_viagem;
+                double custo_gasolina = 0;
+                if(check_gasolina.isChecked()){
+                    custo_gasolina = ((quilometros / mediaKMLT) * custo_medio_LT) / total_veiculos;
+                } else {
+                    custo_gasolina = 0;
+                }
+
+                double custo_hospedagem = 0;
+                if(check_hospedagem.isChecked()){
+                    custo_hospedagem = (custo_medio_noite * total_noites) * total_quartos;
+                } else{
+                    custo_hospedagem = 0;
+                }
+
+                double custo_tarifaAerea = 0;
+                if(check_tarifaAerea.isChecked()){
+                    custo_tarifaAerea = (custo_estimado_pessoa * total_viajantes) + aluguel_veiculo;
+                } else {
+                    custo_tarifaAerea = 0;
+                }
+
+                double custo_refeicoes = 0;
+                if(check_refeicoes.isChecked()){
+                    custo_refeicoes = ((refeicoes_dia * total_viajantes) * custo_estimado_refeicao) * qtd_dias_viagem;
+                } else {
+                    custo_refeicoes = 0;
+                }
 
 
                 /**
                  * Criar função para verificar o valor do check para considerar na soma do total do custo da viagem
                  */
                 // Custo total da viagem
-                double custo_total_viagem = 0;
+                double custo_total_viagem = custo_diversos + custo_gasolina + custo_refeicoes + custo_hospedagem + custo_tarifaAerea;
 
 
                 // Custo por pessoa
                 double custo_por_pessoa = custo_total_viagem / total_viajantes;
 
                 //Set (insert) na tabela TotalViajante
-            /*  model.setTotalViajante(table_totalpessoas.getText().toString());   OK
-                model.setDuracaoViagem(table_duracao_viagem.getText().toString());   OK
+            /*  model.setTotalViajante(table_totalpessoas.getText().toString());    OK
+                model.setDuracaoViagem(table_duracao_viagem.getText().toString());  OK
+                model.setCustoTotalViagem(custo_total_viagem.getText().toString()); OK
+                model.setCustoTotalPessoa(custo_por_pessoa.getText().toString());   OK
+                model.setOrigem(table_origem.getText().toString());                 OK
+                model.setDestino(table_destino.getText().toString());               OK
                 */
 
 
@@ -207,8 +243,8 @@ public class CustosActivity extends AppCompatActivity {
 
 
         // Retorna para tela de login.
-        btnSair = findViewById(R.id.btnSair);
-        btnSair.setOnClickListener(new View.OnClickListener() {
+        btnGravar = findViewById(R.id.btnGravar);
+        btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(CustosActivity.this, LoginActivity.class));

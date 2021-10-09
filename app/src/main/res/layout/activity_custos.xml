@@ -69,6 +69,56 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/de_onde"
+            android:textSize="20sp"
+            android:textColor="@color/blue">
+        </TextView>
+        <EditText
+            android:id="@+id/table_origem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="right">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/para_onde"
+            android:textSize="20sp"
+            android:textColor="@color/blue">
+        </TextView>
+        <EditText
+            android:id="@+id/table_destino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="right">
+
+        </EditText>
+    </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -674,20 +724,20 @@
             android:orientation="horizontal"
             android:gravity="center">
             <Button
-                android:id="@+id/btnGravarCusto"
+                android:id="@+id/btnCalcularCusto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginRight="25dp"
-                android:text="@string/gravar"
+                android:text="@string/calcular"
                 />
             <Button
-                android:id="@+id/btnSair"
+                android:id="@+id/btnGravar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginLeft="25dp"
-                android:text="@string/voltar"
+                android:text="@string/gravar"
                 />
         </LinearLayout>
     </LinearLayout>
