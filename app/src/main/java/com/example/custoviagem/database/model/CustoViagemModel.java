@@ -20,10 +20,10 @@ public class CustoViagemModel {
             +"("
             + COLUNA_ID + " integer primary key autoincrement, "
             + COLUNA_TOTAL_VIAJANTE + " text not null, "
-            + COLUNA_DURACAO + " text not null "
-            + COLUNA_VLRTOTAL + " text not null "
-            + COLUNA_VLRPESSOA + " text not null "
-            + COLUNA_ORIGEM + " text not null "
+            + COLUNA_DURACAO + " text not null, "
+            + COLUNA_VLRTOTAL + " text not null, "
+            + COLUNA_VLRPESSOA + " text not null, "
+            + COLUNA_ORIGEM + " text not null, "
             + COLUNA_DESTINO + " text not null "
             +");";
 
@@ -98,5 +98,9 @@ public class CustoViagemModel {
 
     public void setCustoTotalPessoa(String totalPessoa) {
         this.custoTotalPessoa = totalPessoa;
+    }
+
+    public String toString(){
+        return getId() + " - " + getDestino();
     }
 }

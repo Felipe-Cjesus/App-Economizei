@@ -55,8 +55,8 @@ public class CustosActivity extends AppCompatActivity {
         CustoDAO = new CustoViagemDAO(CustosActivity.this);
 
         // Criação dos componentes. DESTINO E ORIGEM
-        table_origem = findViewById(R.id.table_origem);
-        table_destino = findViewById(R.id.table_destino);
+        table_origem = (EditText) findViewById(R.id.table_origem);
+        table_destino = (EditText) findViewById(R.id.table_destino);
 
         // Criação dos componentes. GASOLINA
         table_totalpessoas = findViewById(R.id.table_totalpessoas);
@@ -110,7 +110,7 @@ public class CustosActivity extends AppCompatActivity {
 
                 DecimalFormat df = new DecimalFormat("#.##");
 
-                //CustoViagemModel model = new CustoViagemModel();
+                CustoViagemModel model = new CustoViagemModel();
 
                 /**
                  *
@@ -207,21 +207,22 @@ public class CustosActivity extends AppCompatActivity {
                 /**
                  * Criar função para verificar o valor do check para considerar na soma do total do custo da viagem
                  */
-                // Custo total da viagem
+                // Custo total da viagem -> Convertendo o resultado final para String
                 double custo_total_viagem = custo_diversos + custo_gasolina + custo_refeicoes + custo_hospedagem + custo_tarifaAerea;
+                String TXT_custo_total_viagem = Double.toString(custo_total_viagem);
 
-
-                // Custo por pessoa
+                // Custo por pessoa -> Convertendo o resultado final para String
                 double custo_por_pessoa = custo_total_viagem / total_viajantes;
+                String TXT_custo_por_pessoa = Double.toString(custo_por_pessoa);
+
 
                 //Set (insert) na tabela TotalViajante
-            /*  model.setTotalViajante(table_totalpessoas.getText().toString());    OK
-                model.setDuracaoViagem(table_duracao_viagem.getText().toString());  OK
-                model.setCustoTotalViagem(custo_total_viagem.getText().toString()); OK
-                model.setCustoTotalPessoa(custo_por_pessoa.getText().toString());   OK
-                model.setOrigem(table_origem.getText().toString());                 OK
-                model.setDestino(table_destino.getText().toString());               OK
-                */
+                model.setTotalViajante(table_totalpessoas.getText().toString());    //OK
+                model.setDuracaoViagem(table_duracao_viagem.getText().toString());  //OK
+                model.setCustoTotalViagem(TXT_custo_total_viagem);                  //OK
+                model.setCustoTotalPessoa(TXT_custo_por_pessoa);                    //OK
+                model.setOrigem(table_origem.getText().toString());                 //OK
+                model.setDestino(table_destino.getText().toString());               //OK
 
 
                 // Insere o valor de todos os custos da tabela Gasolina no textview TOTAL
@@ -231,13 +232,15 @@ public class CustosActivity extends AppCompatActivity {
                 total_hospedagem.setText((String.valueOf("R$ " + df.format(custo_hospedagem))));
                 total_diversos.setText((String.valueOf("R$ " + df.format(custo_diversos))));
 
-                /*
+
                 if (CustoDAO.Insert(model) != -1) {
-                    Toast.makeText(CustosActivity.this, "Custos Cadastrado!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CustosActivity.this, "Custos Calculados com sucesso!", Toast.LENGTH_LONG).show();
+                    //startActivity(new Intent(CustosActivity.this, ResultadoActivity.class));
+                    startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
                 } else {
                     Toast.makeText(CustosActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
-                } */
-                Toast.makeText(CustosActivity.this, "Custos Cadastrados com Sucesso!", Toast.LENGTH_LONG).show();
+                }
+                //Toast.makeText(CustosActivity.this, "Calculo Gravado com Sucesso!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -247,7 +250,8 @@ public class CustosActivity extends AppCompatActivity {
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CustosActivity.this, LoginActivity.class));
+                startActivity(new Intent(CustosActivity.this, ResultadoActivity.class));
+                //startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
             }
         });
 

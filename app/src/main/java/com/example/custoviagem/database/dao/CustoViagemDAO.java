@@ -8,6 +8,7 @@ import com.example.custoviagem.database.DBOpenHelper;
 import com.example.custoviagem.database.model.CustoViagemModel;
 import com.example.custoviagem.database.model.UsuarioModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustoViagemDAO extends AbstrataDAO{
@@ -20,7 +21,7 @@ public class CustoViagemDAO extends AbstrataDAO{
             CustoViagemModel.COLUNA_VLRTOTAL,
             CustoViagemModel.COLUNA_VLRPESSOA,
             CustoViagemModel.COLUNA_ORIGEM,
-            CustoViagemModel.COLUNA_DESTINO,
+            CustoViagemModel.COLUNA_DESTINO
     };
 
     public CustoViagemDAO(final Context contexto) {
@@ -45,8 +46,8 @@ public class CustoViagemDAO extends AbstrataDAO{
             values.put(CustoViagemModel.COLUNA_DURACAO, model.getDuracaoViagem());
             values.put(CustoViagemModel.COLUNA_VLRTOTAL, model.getCustoTotalViagem());
             values.put(CustoViagemModel.COLUNA_VLRPESSOA, model.getCustoTotalPessoa());
-            values.put(CustoViagemModel.COLUNA_ORIGEM, model.getCustoTotalPessoa());
-            values.put(CustoViagemModel.COLUNA_DESTINO, model.getCustoTotalPessoa());
+            values.put(CustoViagemModel.COLUNA_ORIGEM, model.getOrigem());
+            values.put(CustoViagemModel.COLUNA_DESTINO, model.getDestino());
 
             linhasAfetadas = db.insert(CustoViagemModel.TABELA_NOME, null, values);
 
@@ -62,12 +63,25 @@ public class CustoViagemDAO extends AbstrataDAO{
      * @return
      */
 
-    public List<CustoViagemModel> Select(){
+    public List<CustoViagemModel> Select() {
 
+        List<CustoViagemModel> lista = new ArrayList<CustoViagemModel>();
 
-
-        return null;
+        try {
+            Open();
+            Cursor cursor = db.query(UsuarioModel.TABELA_NOME, colunas, null, null, null, null, null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                lista.add(CursorToStructure(cursor));
+                cursor.moveToNext();
+            }
+        }
+        finally {
+            Close();
+        }
+        return lista;
     }
+
 
     /**
      * Transforma o cursor em CustoViagemModel.
