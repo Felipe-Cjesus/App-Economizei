@@ -25,4 +25,5 @@
     <string name="qtd_default">0</string>
     <string name="de_onde">De onde</string>
     <string name="para_onde">Para onde</string>
+    <string name="listar">Listar</string>
 </resources>

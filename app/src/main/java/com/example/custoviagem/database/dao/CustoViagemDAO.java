@@ -69,7 +69,7 @@ public class CustoViagemDAO extends AbstrataDAO{
 
         try {
             Open();
-            Cursor cursor = db.query(UsuarioModel.TABELA_NOME, colunas, null, null, null, null, null);
+            Cursor cursor = db.query(CustoViagemModel.TABELA_NOME, colunas, null, null, null, null, null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 lista.add(CursorToStructure(cursor));

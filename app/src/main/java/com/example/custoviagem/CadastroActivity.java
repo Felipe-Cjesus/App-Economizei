@@ -43,6 +43,7 @@ public class CadastroActivity extends AppCompatActivity {
 
                 if (daoCadastro.Insert(model) != -1) {
                     Toast.makeText(CadastroActivity.this, "Usuário Cadastrado!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(CadastroActivity.this, LoginActivity.class));
                 } else {
                     Toast.makeText(CadastroActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
                 }

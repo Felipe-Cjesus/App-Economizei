@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.custoviagem.database.dao.CustoViagemDAO;
 import com.example.custoviagem.database.model.CustoViagemModel;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class CustosActivity extends AppCompatActivity {
@@ -43,7 +45,7 @@ public class CustosActivity extends AppCompatActivity {
 
     // Variaveis dos checkbox de todas tabelas
     private CheckBox check_gasolina, check_tarifaAerea, check_refeicoes, check_hospedagem, check_entretenimento1, check_entretenimento2, check_entretenimento3, check_entretenimento4;
-    private Button btnCalcularCusto, btnGravar;
+    private Button btnCalcularCusto, btnGravar, btnListar;
     private CustoViagemDAO CustoDAO;
 
     @Override
@@ -108,7 +110,8 @@ public class CustosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                DecimalFormat df = new DecimalFormat("#.##");
+                DecimalFormat df = new DecimalFormat("#.00");
+
 
                 CustoViagemModel model = new CustoViagemModel();
 
@@ -148,6 +151,11 @@ public class CustosActivity extends AppCompatActivity {
 
                 // Custos da tabela Diversos
                 double custo_diversos = 0;
+
+
+                /**
+                 * Função para verificar o valor do check para considerar na soma do total do custo da viagem
+                 */
 
                 if(check_entretenimento1.isChecked()){
                     double custo1 = Double.parseDouble(String.valueOf(edt_diversos1.getText()));
@@ -204,15 +212,13 @@ public class CustosActivity extends AppCompatActivity {
                 }
 
 
-                /**
-                 * Criar função para verificar o valor do check para considerar na soma do total do custo da viagem
-                 */
                 // Custo total da viagem -> Convertendo o resultado final para String
                 double custo_total_viagem = custo_diversos + custo_gasolina + custo_refeicoes + custo_hospedagem + custo_tarifaAerea;
+                custo_total_viagem = Double.valueOf(df.format(custo_total_viagem));
                 String TXT_custo_total_viagem = Double.toString(custo_total_viagem);
 
                 // Custo por pessoa -> Convertendo o resultado final para String
-                double custo_por_pessoa = custo_total_viagem / total_viajantes;
+                double custo_por_pessoa = Double.valueOf(df.format(custo_total_viagem / total_viajantes));
                 String TXT_custo_por_pessoa = Double.toString(custo_por_pessoa);
 
 
@@ -235,12 +241,11 @@ public class CustosActivity extends AppCompatActivity {
 
                 if (CustoDAO.Insert(model) != -1) {
                     Toast.makeText(CustosActivity.this, "Custos Calculados com sucesso!", Toast.LENGTH_LONG).show();
-                    //startActivity(new Intent(CustosActivity.this, ResultadoActivity.class));
-                    startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
+                    //startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
                 } else {
                     Toast.makeText(CustosActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
                 }
-                //Toast.makeText(CustosActivity.this, "Calculo Gravado com Sucesso!", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -250,10 +255,19 @@ public class CustosActivity extends AppCompatActivity {
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CustosActivity.this, ResultadoActivity.class));
-                //startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
+                startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
             }
         });
 
+
+        // Criar ação para botão LISTAR
+        btnListar = findViewById(R.id.btnListar);
+        btnListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CustosActivity.this, "Lista de Simulações!", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
+            }
+        });
     }
 }
