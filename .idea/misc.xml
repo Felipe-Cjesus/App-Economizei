@@ -22,6 +22,10 @@
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/CustoViagem/app/src/main/res/layout/activity_refeicoes.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/CustoViagem/app/src/main/res/layout/activity_tarifa_aerea.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Pichau/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/activity_custos.xml" value="0.184375" />
+        <entry key="app/src/main/res/layout/activity_detalhes.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_lista_destinos.xml" value="0.184375" />
+        <entry key="app/src/main/res/layout/activity_resultado.xml" value="0.184375" />
       </map>
     </option>
   </component>

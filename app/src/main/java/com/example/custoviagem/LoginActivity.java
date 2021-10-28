@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                 UsuarioModel model = dao.Select(editUsuario.getText().toString(), editSenha.getText().toString());
                 if (model != null) {
                     Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LoginActivity.this, CustosActivity.class));
+                    startActivity(new Intent(LoginActivity.this, Lista_Destinos_Activity.class));
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Usuário Não Encontrado!", Toast.LENGTH_LONG).show();

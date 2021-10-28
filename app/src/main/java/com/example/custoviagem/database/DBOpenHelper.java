@@ -1,5 +1,6 @@
 package com.example.custoviagem.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -30,5 +31,11 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL(UsuarioModel.CREATE_TABLE);
         db.execSQL(CustoViagemModel.DROP_TABLE);
         db.execSQL(CustoViagemModel.CREATE_TABLE);
+    }
+
+    private ContentValues pegarDadosCusto(CustoViagemModel custo){
+        ContentValues dados = new ContentValues();
+
+        return dados;
     }
 }
