@@ -241,7 +241,6 @@ public class CustosActivity extends AppCompatActivity {
 
                 if (CustoDAO.Insert(model) != -1) {
                     Toast.makeText(CustosActivity.this, "Custos Calculados com sucesso!", Toast.LENGTH_LONG).show();
-                    //startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
                 } else {
                     Toast.makeText(CustosActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
                 }
@@ -255,6 +254,7 @@ public class CustosActivity extends AppCompatActivity {
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(CustosActivity.this, "Custos gravados com sucesso!", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
             }
         });

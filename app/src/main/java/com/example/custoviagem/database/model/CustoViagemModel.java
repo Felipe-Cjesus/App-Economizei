@@ -101,6 +101,6 @@ public class CustoViagemModel {
     }
 
     public String toString(){
-        return getId() + " - " + getDestino();
+        return getId() + " - Destino: " + getDestino();
     }
 }

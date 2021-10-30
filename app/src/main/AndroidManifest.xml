@@ -22,11 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CustosActivity"/>
-        <activity android:name=".MainActivity"/>
         <activity android:name=".CadastroActivity"/>
-        <activity android:name=".ResultadoActivity"/>
         <activity android:name=".Lista_Destinos_Activity"/>
-        <activity android:name=".DetalheActivity"/>
 
     </application>
 

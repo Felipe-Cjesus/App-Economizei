@@ -43,10 +43,10 @@ public class Lista_Destinos_Activity extends AppCompatActivity {
                 AlertDialog dialog = new AlertDialog.Builder(Lista_Destinos_Activity.this)
                         .setTitle("Custo de viagem")
                         .setMessage("ID: " +" \t " +custo.getId()+
-                                "\nNumero de Viajante: "+ " \t "+custo.getTotalViajante()+
-                                "\nDuração: "+ " \t " + custo.getDuracaoViagem()+
-                                "\nValor total: "+ " \t " + custo.getCustoTotalViagem()+
-                                "\nValor Por Pessoa: "+ " \t " + custo.getCustoTotalPessoa()+
+                                "\nTotal de Viajante: "+ " \t "+custo.getTotalViajante()+
+                                "\nDuração em Dias: "+ " \t " + custo.getDuracaoViagem()+
+                                "\nCusto total da Viagem: "+ " \t " + custo.getCustoTotalViagem()+
+                                "\nCusto Por Pessoa: "+ " \t " + custo.getCustoTotalPessoa()+
                                 "\nOrigem: "+ " \t " + custo.getOrigem()+
                                 "\nDestino: "+ " \t " + custo.getDestino())
                         .setNeutralButton("Sair", null)

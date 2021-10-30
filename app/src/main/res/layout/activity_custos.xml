@@ -123,12 +123,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="1dp">
+            android:layout_marginTop="1dp"
+            android:background="@color/fundo"
+            android:padding="3dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_gasolina">
 
             </TextView>
@@ -138,6 +141,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="100dp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_valor">
 
             </TextView>
@@ -158,7 +162,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:background="@color/fundo2">
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -169,6 +174,7 @@
                 <TableRow>
                     <TextView
                         android:text="Total estimado de Quilometros"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -187,6 +193,7 @@
                 <TableRow>
                     <TextView
                         android:text="Media de quilômetros por litro"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -200,6 +207,7 @@
                 <TableRow>
                     <TextView
                         android:text="Custo médio por litro"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
 
@@ -215,6 +223,7 @@
 
                     <TextView
                         android:text="Total de veículos"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -233,10 +242,12 @@
                 <TableRow>
                     <TextView
                         android:text="@string/valor_total"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:padding="3dip" />
                     <TextView
                         android:id="@+id/total_gasolina"
+                        android:textColor="@color/black"
                         android:text="R$"
                         android:textStyle="bold"
                         android:padding="3dip" />
@@ -255,12 +266,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="1dp">
+            android:layout_marginTop="1dp"
+            android:background="@color/fundo"
+            android:padding="3dp"
+            android:layout_marginBottom="@dimen/cardview_default_radius">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_tarifa">
 
             </TextView>
@@ -270,6 +286,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="60dp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_valor">
 
             </TextView>
@@ -291,7 +308,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:background="@color/fundo2">
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -302,6 +320,7 @@
                 <TableRow>
                     <TextView
                         android:text="Custo estimado por pessoa"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -320,6 +339,7 @@
                     <TextView
 
                         android:text="Aluguel de veículo"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -338,10 +358,12 @@
                 <TableRow>
                     <TextView
                         android:text="@string/valor_total"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:padding="3dip" />
                     <TextView
                         android:id="@+id/total_tarifaAerea"
+                        android:textColor="@color/black"
                         android:text="R$"
                         android:textStyle="bold"
                         android:padding="3dip" />
@@ -359,12 +381,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/fundo"
             android:layout_marginTop="1dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_refeicoes">
 
             </TextView>
@@ -374,6 +398,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="100dp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_valor">
 
             </TextView>
@@ -400,11 +425,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@color/fundo2"
                 android:stretchColumns="2">
 
                 <TableRow>
                     <TextView
                         android:text="Custo estimado por refeição"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
 
@@ -423,6 +450,7 @@
                     <TextView
 
                         android:text="Refeições por dia"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -441,10 +469,12 @@
                 <TableRow>
                     <TextView
                         android:text="@string/valor_total"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:padding="3dip" />
                     <TextView
                         android:id="@+id/total_refeicoes"
+                        android:textColor="@color/black"
                         android:text="R$"
                         android:textStyle="bold"
                         android:padding="3dip" />
@@ -463,12 +493,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/fundo"
             android:layout_marginTop="1dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_hospedagem">
 
             </TextView>
@@ -478,6 +510,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="70dp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_valor">
 
             </TextView>
@@ -498,6 +531,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:background="@color/fundo2"
             android:layout_marginBottom="20dp">
 
             <TableLayout
@@ -509,6 +543,7 @@
                 <TableRow>
                     <TextView
                         android:text="Custo médio (por noite)"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -525,8 +560,8 @@
 
                 <TableRow>
                     <TextView
-
                         android:text="Total de noites"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -540,6 +575,7 @@
                 <TableRow>
                     <TextView
                         android:text="Total de quartos"
+                        android:textColor="@color/black"
                         android:layout_marginBottom="3dp"
                         android:layout_gravity="bottom"/>
                     <EditText
@@ -558,10 +594,12 @@
                 <TableRow>
                     <TextView
                         android:text="@string/valor_total"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:padding="3dip" />
                     <TextView
                         android:id="@+id/total_hospedagem"
+                        android:textColor="@color/black"
                         android:text="R$"
                         android:textStyle="bold"
                         android:padding="3dip" />
@@ -581,12 +619,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/fundo"
             android:layout_marginTop="1dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_entretenimento">
 
             </TextView>
@@ -596,6 +636,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/blue"
+                android:layout_gravity="center"
                 android:text="@string/table_valor">
 
             </TextView>
@@ -616,6 +657,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:background="@color/fundo2"
             android:layout_marginBottom="20dp">
 
             <TableLayout
@@ -701,10 +743,12 @@
                 <TableRow>
                     <TextView
                         android:text="@string/valor_total"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:padding="3dip" />
                     <TextView
                         android:id="@+id/total_diversos"
+                        android:textColor="@color/black"
                         android:text="R$"
                         android:textStyle="bold"
                         android:padding="3dip" />
@@ -729,6 +773,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginRight="20dp"
+                android:backgroundTint="@color/blue"
                 android:text="@string/calcular"
                 />
             <Button
@@ -736,7 +781,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-
+                android:backgroundTint="@color/blue"
                 android:text="@string/gravar"
                 />
             <Button
@@ -744,6 +789,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:backgroundTint="@color/blue"
                 android:layout_marginLeft="20dp"
                 android:text="@string/listar"
                 />
