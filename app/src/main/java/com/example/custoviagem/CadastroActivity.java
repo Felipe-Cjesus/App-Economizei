@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,7 +17,8 @@ import com.example.custoviagem.database.model.UsuarioModel;
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText cadastroUsuario, cadastroSenha;
-    private Button btnConfirmarCadastro, btnVoltar;
+    private Button btnConfirmarCadastro;
+    private TextView txtVoltar;
     private UsuarioDAO daoCadastro;
 
     @Override
@@ -51,8 +53,8 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
 
-        btnVoltar = findViewById(R.id.btnVoltar);
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
+        txtVoltar = findViewById(R.id.txtVoltar);
+        txtVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(CadastroActivity.this, LoginActivity.class));
