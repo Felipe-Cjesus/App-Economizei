@@ -60,9 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(LoginActivity.this, Lista_Destinos_Activity.class));
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Usuário Não Encontrado!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Usuário ou senha incorreto! Tente novamente!", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
@@ -74,11 +73,8 @@ public class LoginActivity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
-
             }
         });
-
     }
 }

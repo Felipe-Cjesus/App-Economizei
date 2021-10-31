@@ -48,6 +48,7 @@ public class CustosActivity extends AppCompatActivity {
     private Button btnCalcularCusto, btnGravar, btnListar;
     private CustoViagemDAO CustoDAO;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,157 +111,156 @@ public class CustosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                DecimalFormat df = new DecimalFormat("#.00");
+                // Validação de campos obrigatórios
+                if(table_totalpessoas.getText().toString().equals("0")){
+                    Toast.makeText(CustosActivity.this, "Campo total de viajantes obrigatório", Toast.LENGTH_LONG).show();
+                }else if(table_duracao_viagem.getText().toString().equals("0")){
+                    Toast.makeText(CustosActivity.this, "Campo duração de viagem obrigatório", Toast.LENGTH_LONG).show();
+                }else if(table_origem.getText().toString().equals("")){
+                    Toast.makeText(CustosActivity.this, "Campo origem obrigatório", Toast.LENGTH_LONG).show();
+                }else if(table_destino.getText().toString().equals("")){
+                    Toast.makeText(CustosActivity.this, "Campo destino obrigatório", Toast.LENGTH_LONG).show();
+                }else{
+
+                    // Formatação do campo decimal
+                    DecimalFormat df = new DecimalFormat("#.00");
+
+                    // Instancia do model
+                    CustoViagemModel model = new CustoViagemModel();
+
+                    // Total de viajantes
+                    double total_viajantes = Double.parseDouble(String.valueOf(table_totalpessoas.getText()));
+
+                    //Duração da viagem (DIAS)
+                    double qtd_dias_viagem = Double.parseDouble(String.valueOf(table_duracao_viagem.getText()));
+
+                    // Custos da tabela Gasolina
+                    double quilometros = Double.parseDouble(String.valueOf(table_totalKM.getText()));
+                    double mediaKMLT = Double.parseDouble(String.valueOf(table_mediaKM_LT.getText()));
+                    double custo_medio_LT = Double.parseDouble(String.valueOf(table_custoMedioLT.getText()));
+                    double total_veiculos = Double.parseDouble(String.valueOf(table_total_veiculos.getText()));
+
+                    // Custos da tabela Tarifa Aerea
+                    double custo_estimado_pessoa = Double.parseDouble(String.valueOf(table_custo_por_pessoa.getText()));
+                    double aluguel_veiculo = Double.parseDouble(String.valueOf(table_aluguel_veiculo.getText()));
+
+                    // Custos da tabela Refeicoes
+                    double custo_estimado_refeicao = Double.parseDouble(String.valueOf(table_custo_por_refeicao.getText()));
+                    double refeicoes_dia = Double.parseDouble(String.valueOf(table_custo_refeicao_dia.getText()));
+
+                    // Custos da tabela Hospedagem
+                    double custo_medio_noite = Double.parseDouble(String.valueOf(table_custo_medio_noite.getText()));
+                    double total_noites = Double.parseDouble(String.valueOf(table_total_noites.getText()));
+                    double total_quartos = Double.parseDouble(String.valueOf(table_total_quartos.getText()));
+
+                    // Custos da tabela Diversos
+                    double custo_diversos = 0;
 
 
-                CustoViagemModel model = new CustoViagemModel();
+                    // Verificação do valor do check para considerar ou não valor total da tabela na soma do total do custo da viagem
+                    if(check_entretenimento1.isChecked()){
+                        double custo1 = Double.parseDouble(String.valueOf(edt_diversos1.getText()));
+                        custo_diversos = custo1;
+                    } else {
+                        custo_diversos += 0;
+                    }
+                    if(check_entretenimento2.isChecked()){
+                        double custo2 = Double.parseDouble(String.valueOf(edt_diversos2.getText()));
+                        custo_diversos += custo2;
+                    } else {
+                        custo_diversos += 0;
+                    }
+                    if(check_entretenimento3.isChecked()){
+                        double custo3 = Double.parseDouble(String.valueOf(edt_diversos3.getText()));
+                        custo_diversos += custo3;
+                    } else {
+                        custo_diversos += 0;
+                    }
+                    if(check_entretenimento4.isChecked()){
+                        double custo4 = Double.parseDouble(String.valueOf(edt_diversos4.getText()));
+                        custo_diversos += custo4;
+                    } else {
+                        custo_diversos += 0;
+                    }
 
-                /**
-                 *
-                 * Falta fazer o calculo utilizando a formula, para gravar no banco apenas os valores totais
-                 *
-                 */
+                    //Variaveis para guardar o valor total dos custos das tabelas
+                    double custo_gasolina = 0;
+                    if(check_gasolina.isChecked()){
+                        custo_gasolina = ((quilometros / mediaKMLT) * custo_medio_LT) / total_veiculos;
+                    } else {
+                        custo_gasolina = 0;
+                    }
 
+                    double custo_hospedagem = 0;
+                    if(check_hospedagem.isChecked()){
+                        custo_hospedagem = (custo_medio_noite * total_noites) * total_quartos;
+                    } else{
+                        custo_hospedagem = 0;
+                    }
 
-                // Total de viajantes
-                double total_viajantes = Double.parseDouble(String.valueOf(table_totalpessoas.getText()));
+                    double custo_tarifaAerea = 0;
+                    if(check_tarifaAerea.isChecked()){
+                        custo_tarifaAerea = (custo_estimado_pessoa * total_viajantes) + aluguel_veiculo;
+                    } else {
+                        custo_tarifaAerea = 0;
+                    }
 
-                //Duração da viagem (DIAS)
-                double qtd_dias_viagem = Double.parseDouble(String.valueOf(table_duracao_viagem.getText()));
+                    double custo_refeicoes = 0;
+                    if(check_refeicoes.isChecked()){
+                        custo_refeicoes = ((refeicoes_dia * total_viajantes) * custo_estimado_refeicao) * qtd_dias_viagem;
+                    } else {
+                        custo_refeicoes = 0;
+                    }
 
-                // Custos da tabela Gasolina
-                double quilometros = Double.parseDouble(String.valueOf(table_totalKM.getText()));
-                double mediaKMLT = Double.parseDouble(String.valueOf(table_mediaKM_LT.getText()));
-                double custo_medio_LT = Double.parseDouble(String.valueOf(table_custoMedioLT.getText()));
-                double total_veiculos = Double.parseDouble(String.valueOf(table_total_veiculos.getText()));
+                    // Custo total da viagem -> Convertendo o resultado final para String
+                    double custo_total_viagem = custo_diversos + custo_gasolina + custo_refeicoes + custo_hospedagem + custo_tarifaAerea;
+                    custo_total_viagem = Double.valueOf(df.format(custo_total_viagem));
+                    String TXT_custo_total_viagem = Double.toString(custo_total_viagem);
 
-                // Custos da tabela Tarifa Aerea
-                double custo_estimado_pessoa = Double.parseDouble(String.valueOf(table_custo_por_pessoa.getText()));
-                double aluguel_veiculo = Double.parseDouble(String.valueOf(table_aluguel_veiculo.getText()));
+                    // Custo por pessoa -> Convertendo o resultado final para String
+                    double custo_por_pessoa = Double.valueOf(df.format(custo_total_viagem / total_viajantes));
+                    String TXT_custo_por_pessoa = Double.toString(custo_por_pessoa);
 
+                    // Insere o valor de todos os custos da tabela Gasolina no textview TOTAL
+                    total_gasolina.setText(String.valueOf("R$ " + df.format(custo_gasolina)));
+                    total_tarifaAerea.setText((String.valueOf("R$ " + df.format(custo_tarifaAerea))));
+                    total_refeicoes.setText((String.valueOf("R$ " + df.format(custo_refeicoes))));
+                    total_hospedagem.setText((String.valueOf("R$ " + df.format(custo_hospedagem))));
+                    total_diversos.setText((String.valueOf("R$ " + df.format(custo_diversos))));
 
-                // Custos da tabela Refeicoes
-                double custo_estimado_refeicao = Double.parseDouble(String.valueOf(table_custo_por_refeicao.getText()));
-                double refeicoes_dia = Double.parseDouble(String.valueOf(table_custo_refeicao_dia.getText()));
-
-
-                // Custos da tabela Hospedagem
-                double custo_medio_noite = Double.parseDouble(String.valueOf(table_custo_medio_noite.getText()));
-                double total_noites = Double.parseDouble(String.valueOf(table_total_noites.getText()));
-                double total_quartos = Double.parseDouble(String.valueOf(table_total_quartos.getText()));
-
-                // Custos da tabela Diversos
-                double custo_diversos = 0;
-
-
-                /**
-                 * Função para verificar o valor do check para considerar na soma do total do custo da viagem
-                 */
-
-                if(check_entretenimento1.isChecked()){
-                    double custo1 = Double.parseDouble(String.valueOf(edt_diversos1.getText()));
-                    custo_diversos = custo1;
-                } else {
-                    custo_diversos += 0;
-                }
-                if(check_entretenimento2.isChecked()){
-                    double custo2 = Double.parseDouble(String.valueOf(edt_diversos2.getText()));
-                    custo_diversos += custo2;
-                } else {
-                    custo_diversos += 0;
-                }
-                if(check_entretenimento3.isChecked()){
-                    double custo3 = Double.parseDouble(String.valueOf(edt_diversos3.getText()));
-                    custo_diversos += custo3;
-                } else {
-                    custo_diversos += 0;
-                }
-                if(check_entretenimento4.isChecked()){
-                    double custo4 = Double.parseDouble(String.valueOf(edt_diversos4.getText()));
-                    custo_diversos += custo4;
-                } else {
-                    custo_diversos += 0;
-                }
-
-                //Variaveis para guardar o valor total dos custos das tabelas
-                double custo_gasolina = 0;
-                if(check_gasolina.isChecked()){
-                    custo_gasolina = ((quilometros / mediaKMLT) * custo_medio_LT) / total_veiculos;
-                } else {
-                    custo_gasolina = 0;
-                }
-
-                double custo_hospedagem = 0;
-                if(check_hospedagem.isChecked()){
-                    custo_hospedagem = (custo_medio_noite * total_noites) * total_quartos;
-                } else{
-                    custo_hospedagem = 0;
-                }
-
-                double custo_tarifaAerea = 0;
-                if(check_tarifaAerea.isChecked()){
-                    custo_tarifaAerea = (custo_estimado_pessoa * total_viajantes) + aluguel_veiculo;
-                } else {
-                    custo_tarifaAerea = 0;
-                }
-
-                double custo_refeicoes = 0;
-                if(check_refeicoes.isChecked()){
-                    custo_refeicoes = ((refeicoes_dia * total_viajantes) * custo_estimado_refeicao) * qtd_dias_viagem;
-                } else {
-                    custo_refeicoes = 0;
-                }
-
-
-                // Custo total da viagem -> Convertendo o resultado final para String
-                double custo_total_viagem = custo_diversos + custo_gasolina + custo_refeicoes + custo_hospedagem + custo_tarifaAerea;
-                custo_total_viagem = Double.valueOf(df.format(custo_total_viagem));
-                String TXT_custo_total_viagem = Double.toString(custo_total_viagem);
-
-                // Custo por pessoa -> Convertendo o resultado final para String
-                double custo_por_pessoa = Double.valueOf(df.format(custo_total_viagem / total_viajantes));
-                String TXT_custo_por_pessoa = Double.toString(custo_por_pessoa);
-
-
-                //Set (insert) na tabela TotalViajante
-                model.setTotalViajante(table_totalpessoas.getText().toString());    //OK
-                model.setDuracaoViagem(table_duracao_viagem.getText().toString());  //OK
-                model.setCustoTotalViagem(TXT_custo_total_viagem);                  //OK
-                model.setCustoTotalPessoa(TXT_custo_por_pessoa);                    //OK
-                model.setOrigem(table_origem.getText().toString());                 //OK
-                model.setDestino(table_destino.getText().toString());               //OK
-
-
-                // Insere o valor de todos os custos da tabela Gasolina no textview TOTAL
-                total_gasolina.setText(String.valueOf("R$ " + df.format(custo_gasolina)));
-                total_tarifaAerea.setText((String.valueOf("R$ " + df.format(custo_tarifaAerea))));
-                total_refeicoes.setText((String.valueOf("R$ " + df.format(custo_refeicoes))));
-                total_hospedagem.setText((String.valueOf("R$ " + df.format(custo_hospedagem))));
-                total_diversos.setText((String.valueOf("R$ " + df.format(custo_diversos))));
-
-
-                if (CustoDAO.Insert(model) != -1) {
+                    // Mensagem de sucesso da simulação dos custos
                     Toast.makeText(CustosActivity.this, "Custos Calculados com sucesso!", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(CustosActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
+
+                    // Botão que executa a função de INSERT no BD
+                    btnGravar = findViewById(R.id.btnGravar);
+                    btnGravar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            //Set (insert) na tabela TotalViajante
+                            model.setTotalViajante(table_totalpessoas.getText().toString());
+                            model.setDuracaoViagem(table_duracao_viagem.getText().toString());
+                            model.setCustoTotalViagem(TXT_custo_total_viagem);
+                            model.setCustoTotalPessoa(TXT_custo_por_pessoa);
+                            model.setOrigem(table_origem.getText().toString());
+                            model.setDestino(table_destino.getText().toString());
+
+                            // Verificação de erro ao fazer o INSERT no banco de dados
+                            if (CustoDAO.Insert(model) != -1) {
+                                Toast.makeText(CustosActivity.this, "Custos gravados com sucesso!", Toast.LENGTH_LONG).show();
+
+                                // Chama a activity de lista de simulações ja gravadas no BD (SELECT *)
+                                startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
+                            } else {
+                                Toast.makeText(CustosActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
                 }
-
             }
         });
 
-
-        // Retorna para tela de login.
-        btnGravar = findViewById(R.id.btnGravar);
-        btnGravar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(CustosActivity.this, "Custos gravados com sucesso!", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(CustosActivity.this, Lista_Destinos_Activity.class));
-            }
-        });
-
-
-        // Criar ação para botão LISTAR
+        // Chama activity de Lista de simulações já gravados no BD
         btnListar = findViewById(R.id.btnListar);
         btnListar.setOnClickListener(new View.OnClickListener() {
             @Override
