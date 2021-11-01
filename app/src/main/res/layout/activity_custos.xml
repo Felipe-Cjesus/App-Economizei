@@ -828,6 +828,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -835,45 +836,100 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
 
-            android:layout_weight="1"
             android:background="@drawable/background_sec"
-
             android:elevation="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="5dp">
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <ImageView
-                android:id="@+id/btnCalcularCusto"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="374dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="@color/primaryDarkColor"
-                app:srcCompat="@drawable/ic_calculate_24" />
+                >
 
-            <ImageView
 
-                android:id="@+id/btnListar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/primaryDarkColor"
-                app:srcCompat="@drawable/ic_list_24" />
+                <ImageView
+                    android:id="@+id/btnCalcularCusto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@color/primaryDarkColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.32"
+                    app:srcCompat="@drawable/ic_calculate_24" />
 
-            <ImageView
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Calcular"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toEndOf="@+id/btnCalcularCusto"
+                    app:layout_constraintHorizontal_bias="0.59"
+                    app:layout_constraintStart_toStartOf="@+id/btnCalcularCusto"
+                    app:layout_constraintTop_toBottomOf="@+id/btnCalcularCusto" />
 
-                android:id="@+id/btnGravar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="20dp"
-                android:background="@color/primaryDarkColor"
-                app:srcCompat="@drawable/ic_save_24" />
+                <ImageView
+
+                    android:id="@+id/btnListar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="152dp"
+                    android:background="@color/primaryDarkColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btnCalcularCusto"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.32"
+                    app:srcCompat="@drawable/ic_list_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Listar"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toEndOf="@+id/btnListar"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toStartOf="@+id/btnListar"
+                    app:layout_constraintTop_toBottomOf="@+id/btnListar" />
+
+
+                <ImageView
+
+                    android:id="@+id/btnGravar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@color/primaryDarkColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.953"
+                    app:layout_constraintStart_toEndOf="@+id/btnListar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.32"
+                    app:srcCompat="@drawable/ic_save_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primaryDarkColor"
+                    android:text="Gravar"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toEndOf="@+id/btnGravar"
+                    app:layout_constraintHorizontal_bias="0.57"
+                    app:layout_constraintStart_toStartOf="@+id/btnGravar"
+                    app:layout_constraintTop_toBottomOf="@+id/btnGravar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
+
 
 
         <!--        <LinearLayout-->

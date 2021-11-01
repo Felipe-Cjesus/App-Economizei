@@ -65,6 +65,14 @@
                 android:layout_margin="10dp"
                 android:hint="@string/cadastro_senha"
                 android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/confirmarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="@string/confirmar_senha"
+                android:inputType="textPassword" />
         </LinearLayout>
 
 
@@ -122,7 +130,7 @@
         android:textColor="@color/primaryDarkColor"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/login_button"
+
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
