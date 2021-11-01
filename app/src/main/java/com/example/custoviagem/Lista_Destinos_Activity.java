@@ -16,14 +16,18 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.custoviagem.adapter.DestinoAdapter;
 import com.example.custoviagem.database.dao.CustoViagemDAO;
 import com.example.custoviagem.database.model.CustoViagemModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lista_Destinos_Activity extends AppCompatActivity {
 
     private ListView listaDestinos;
+    private final ArrayList<CustoViagemModel> listaDestino = new ArrayList<CustoViagemModel>();
+    private DestinoAdapter destinoAdapter;
     private Button novoCalculo;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -129,8 +133,10 @@ public class Lista_Destinos_Activity extends AppCompatActivity {
         List<CustoViagemModel> custos = dao.Select();
         //dao.close();
 
-        ArrayAdapter<CustoViagemModel> adapter = new ArrayAdapter<CustoViagemModel>(this, android.R.layout.simple_list_item_1, custos);
-        listaDestinos.setAdapter(adapter);
+        destinoAdapter = new DestinoAdapter(Lista_Destinos_Activity.this, custos);
+
+//        ArrayAdapter<CustoViagemModel> adapter = new ArrayAdapter<CustoViagemModel>(this, custos);
+        listaDestinos.setAdapter(destinoAdapter);
     }
 
 }

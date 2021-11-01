@@ -44,6 +44,15 @@ public class CustoViagemModel {
     private String origem;
     private String destino;
 
+//    public CustoViagemModel(final String custoTotalViagem,final String destino) {
+//        this.custoTotalViagem = custoTotalViagem;
+//        this.destino = destino;
+//    }
+
+//    public CustoViagemModel(){}
+
+
+
     public String getOrigem() {
         return origem;
     }
