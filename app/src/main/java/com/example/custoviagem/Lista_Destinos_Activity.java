@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,6 +21,8 @@ import com.example.custoviagem.adapter.DestinoAdapter;
 import com.example.custoviagem.database.DBOpenHelper;
 import com.example.custoviagem.database.dao.CustoViagemDAO;
 import com.example.custoviagem.database.model.CustoViagemModel;
+import com.example.custoviagem.database.model.UsuarioModel;
+import com.example.custoviagem.util.Shared;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,19 +30,23 @@ import java.util.List;
 public class Lista_Destinos_Activity extends AppCompatActivity {
 
     private ListView listaDestinos;
-    private final ArrayList<CustoViagemModel> listaDestino = new ArrayList<CustoViagemModel>();
+    private TextView txtPerfil;
     private DestinoAdapter destinoAdapter;
     private Button novoCalculo;
+    private Shared shared;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_destinos);
 
-        listaDestinos = (ListView) findViewById(R.id.lista_destinos);
 
-        /**
-         *
-         */
+        // pegando o usuario salvo no shared e alterar o nome do perfil
+        shared = new Shared(Lista_Destinos_Activity.this);
+        txtPerfil = findViewById(R.id.txtPerfil);
+        txtPerfil.setText(shared.getString(Shared.COLUNA_USUARIO));
+
+
+        listaDestinos = (ListView) findViewById(R.id.lista_destinos);
         listaDestinos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
