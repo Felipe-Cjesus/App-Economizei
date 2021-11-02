@@ -36,13 +36,22 @@ public class CustoViagemModel {
 
     ===========================================================*/
 
-    private long id;
+    private Long id;
     private String totalViajante;
     private String duracaoViagem;
     private String custoTotalViagem;
     private String custoTotalPessoa;
     private String origem;
     private String destino;
+
+//    public CustoViagemModel(final String custoTotalViagem,final String destino) {
+//        this.custoTotalViagem = custoTotalViagem;
+//        this.destino = destino;
+//    }
+
+//    public CustoViagemModel(){}
+
+
 
     public String getOrigem() {
         return origem;
@@ -60,11 +69,11 @@ public class CustoViagemModel {
         this.destino = destino;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

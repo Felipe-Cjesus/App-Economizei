@@ -38,4 +38,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
         return dados;
     }
+
+    public void deleta(CustoViagemModel custoViagemModel){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String[] params = {custoViagemModel.getId().toString()};
+        db.delete("tb_custoviagem", "_id = ?", params);
+    }
+
 }

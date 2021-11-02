@@ -54,5 +54,8 @@ public class UsuarioModel {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    public String toString(){
+        return getId() + " - Destino: " + getUsuario();
+    }
 
 }

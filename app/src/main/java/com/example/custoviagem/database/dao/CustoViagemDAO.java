@@ -3,6 +3,7 @@ package com.example.custoviagem.database.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.custoviagem.database.DBOpenHelper;
 import com.example.custoviagem.database.model.CustoViagemModel;
@@ -100,6 +101,8 @@ public class CustoViagemDAO extends AbstrataDAO{
         model.setDestino(cursor.getString(6));
         return model;
     }
+
+
 
 
 

@@ -16,14 +16,19 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.custoviagem.adapter.DestinoAdapter;
+import com.example.custoviagem.database.DBOpenHelper;
 import com.example.custoviagem.database.dao.CustoViagemDAO;
 import com.example.custoviagem.database.model.CustoViagemModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lista_Destinos_Activity extends AppCompatActivity {
 
     private ListView listaDestinos;
+    private final ArrayList<CustoViagemModel> listaDestino = new ArrayList<CustoViagemModel>();
+    private DestinoAdapter destinoAdapter;
     private Button novoCalculo;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,7 +88,7 @@ public class Lista_Destinos_Activity extends AppCompatActivity {
      */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
-        MenuItem detalhe = menu.add("Editar");
+        MenuItem detalhe = menu.add("Eliminar");
         detalhe.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -92,31 +97,12 @@ public class Lista_Destinos_Activity extends AppCompatActivity {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 CustoViagemModel custo = (CustoViagemModel) listaDestinos.getItemAtPosition(info.position);
 
-                Intent intentNovoCalculo = new Intent(Lista_Destinos_Activity.this, CustosActivity.class);
-                startActivity(intentNovoCalculo);
+//                Intent intentNovoCalculo = new Intent(Lista_Destinos_Activity.this, CustosActivity.class);
+//                startActivity(intentNovoCalculo);
 
-//                AlertDialog dialog = new AlertDialog.Builder(Lista_Destinos_Activity.this)
-//                        .setTitle(R.string.app_name)
-//                        .setMessage("ID: " +" \t " +custo.getId()+
-//                                "\nNumero de Viajante: "+ " \t "+custo.getTotalViajante()+
-//                                "\nDuração: "+ " \t " + custo.getDuracaoViagem()+
-//                                "\nValor total: "+ " \t " + custo.getCustoTotalViagem()+
-//                                "\nValor Por Pessoa: "+ " \t " + custo.getCustoTotalPessoa()+
-//                                "\nOrigem: "+ " \t " + custo.getOrigem()+
-//                                "\nDestino: "+ " \t " + custo.getDestino())
-////                        .setNeutralButton("Sair", null)
-//                        .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                Intent intentNovoCalculo = new Intent(Lista_Destinos_Activity.this, CustosActivity.class);
-//                                startActivity(intentNovoCalculo);
-//                            }
-//                        })
-//                        .show();
-//
-//                dialog.getButton(AlertDialog.THEME_HOLO_DARK);
-//                Intent intentDetalhe = new Intent(Lista_Destinos_Activity.this, DetalheActivity.class);
-//                startActivity(intentDetalhe);
+                DBOpenHelper dao = new DBOpenHelper(Lista_Destinos_Activity.this);
+                dao.deleta(custo);
+                dao.close();
 
                 carregaLista();
                 return false;
@@ -129,8 +115,10 @@ public class Lista_Destinos_Activity extends AppCompatActivity {
         List<CustoViagemModel> custos = dao.Select();
         //dao.close();
 
-        ArrayAdapter<CustoViagemModel> adapter = new ArrayAdapter<CustoViagemModel>(this, android.R.layout.simple_list_item_1, custos);
-        listaDestinos.setAdapter(adapter);
+        destinoAdapter = new DestinoAdapter(Lista_Destinos_Activity.this, custos);
+
+//        ArrayAdapter<CustoViagemModel> adapter = new ArrayAdapter<CustoViagemModel>(this, custos);
+        listaDestinos.setAdapter(destinoAdapter);
     }
 
 }
