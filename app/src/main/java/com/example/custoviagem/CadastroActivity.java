@@ -50,9 +50,7 @@ public class CadastroActivity extends AppCompatActivity {
                 else if(confirmarSenha.getText().toString().equals("")){
                     Toast.makeText(CadastroActivity.this, "Campo confirmação de senha é Obrigatório, Tente novamente!", Toast.LENGTH_LONG).show();
                 }
-
-                //Verifica se o campo senha é diferente do campo confirmação de senha
-                else if(cadastroSenha.getText().toString() != confirmarSenha.getText().toString()){
+                else if(!cadastroSenha.getText().toString().equals(confirmarSenha.getText().toString())){
                     Toast.makeText(CadastroActivity.this, "Senhas informadas não conferem, Tente Novamente!", Toast.LENGTH_LONG).show();
                 }
 
