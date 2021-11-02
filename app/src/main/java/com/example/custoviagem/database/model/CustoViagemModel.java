@@ -36,7 +36,7 @@ public class CustoViagemModel {
 
     ===========================================================*/
 
-    private long id;
+    private Long id;
     private String totalViajante;
     private String duracaoViagem;
     private String custoTotalViagem;
@@ -69,11 +69,11 @@ public class CustoViagemModel {
         this.destino = destino;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
