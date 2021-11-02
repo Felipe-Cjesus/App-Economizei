@@ -3,9 +3,9 @@ package com.example.custoviagem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.custoviagem.database.dao.CustoViagemDAO;
 import com.example.custoviagem.database.model.CustoViagemModel;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class CustosActivity extends AppCompatActivity {
@@ -45,7 +43,7 @@ public class CustosActivity extends AppCompatActivity {
 
     // Variaveis dos checkbox de todas tabelas
     private CheckBox check_gasolina, check_tarifaAerea, check_refeicoes, check_hospedagem, check_entretenimento1, check_entretenimento2, check_entretenimento3, check_entretenimento4;
-    private Button btnCalcularCusto, btnGravar, btnListar;
+    private ImageView imgCalcularCusto, imgGravar, imgListar;
     private CustoViagemDAO CustoDAO;
 
 
@@ -106,8 +104,8 @@ public class CustosActivity extends AppCompatActivity {
         total_diversos = (TextView) findViewById(R.id.total_diversos);
 
         // Insert dos custos no banco de dados
-        btnCalcularCusto = findViewById(R.id.btnCalcularCusto);
-        btnCalcularCusto.setOnClickListener(new View.OnClickListener() {
+        imgCalcularCusto = findViewById(R.id.btnCalcularCusto);
+        imgCalcularCusto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -232,8 +230,8 @@ public class CustosActivity extends AppCompatActivity {
                     Toast.makeText(CustosActivity.this, "Custos Calculados com sucesso!", Toast.LENGTH_LONG).show();
 
                     // Botão que executa a função de INSERT no BD
-                    btnGravar = findViewById(R.id.btnGravar);
-                    btnGravar.setOnClickListener(new View.OnClickListener() {
+                    imgGravar = findViewById(R.id.btnGravar);
+                    imgGravar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
@@ -261,8 +259,8 @@ public class CustosActivity extends AppCompatActivity {
         });
 
         // Chama activity de Lista de simulações já gravados no BD
-        btnListar = findViewById(R.id.btnListar);
-        btnListar.setOnClickListener(new View.OnClickListener() {
+        imgListar = findViewById(R.id.btnListar);
+        imgListar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(CustosActivity.this, "Lista de Simulações!", Toast.LENGTH_LONG).show();

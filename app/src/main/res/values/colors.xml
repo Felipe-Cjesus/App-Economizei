@@ -7,8 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#0466B8</color>
+<!--    <color name="blue">#0466B8</color>-->
     <color name="red">#D50000</color>
+    <color name="blue_700">#2a6084</color>
+    <color name="bar_background">#0E8BB1</color>
     <color name="fundo">#C19BE5EC</color>
     <color name="fundo2">#E4E3E3</color>
+
+    <color name="primaryColor">#0e8bb1</color>
+    <color name="primaryLightColor">#5abbe3</color>
+    <color name="primaryDarkColor">#005e81</color>
+    <color name="secondaryColor">#2a6084</color>
+    <color name="secondaryLightColor">#5c8db4</color>
+    <color name="secondaryDarkColor">#003657</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#ffffff</color>
 </resources>

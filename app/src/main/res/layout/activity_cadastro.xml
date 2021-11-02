@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="match_parent"
@@ -21,12 +26,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:layout_marginBottom="1dp"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
             android:layout_width="match_parent"
@@ -54,41 +63,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:inputType="textPassword"
                 android:hint="@string/cadastro_senha"
-                />
-        </LinearLayout>
+                android:inputType="textPassword" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/btnConfirmarCadastro"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/confirmarSenha"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/blue"
-                android:textColor="@color/white"
-                android:text="@string/gravar" />
-
-            <Button
-                android:id="@+id/btnVoltar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:backgroundTint="@color/blue"
-                android:gravity="center"
-                android:text="@string/voltar"
-                android:textColor="@color/white" />
+                android:hint="@string/confirmar_senha"
+                android:inputType="textPassword" />
         </LinearLayout>
+
+
     </LinearLayout>
 
 
-</LinearLayout>
+    <!--        <Button-->
+<!--            -->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@drawable/background"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/voltar"-->
+<!--            android:textColor="@color/white" />-->
+
+
+    <Button
+        android:id="@+id/btnConfirmarCadastro"
+        android:layout_width="312dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background"
+        android:backgroundTint="@color/primaryDarkColor"
+        android:gravity="center"
+        android:text="@string/gravar"
+        android:textColor="@color/secondaryTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="180dp"
+        android:text="Já tem uma conta?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnConfirmarCadastro"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfirmarCadastro"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text=" Login"
+        android:textColor="@color/primaryDarkColor"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,7 +20,8 @@ import com.example.custoviagem.util.Shared;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editUsuario, editSenha;
-    private Button btnLogin, btnCadastrar;
+    private TextView txtCadastrar;
+    private Button btnLogin;
     private UsuarioDAO dao;
     private CheckBox check_login;
     private Shared shared;
@@ -69,8 +71,8 @@ public class LoginActivity extends AppCompatActivity {
         editSenha.setText(shared.getString(Shared.COLUNA_SENHA));
 
         // Abre tela para Gravar um novo usuario.
-        btnCadastrar = findViewById(R.id.btnCadastrar);
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        txtCadastrar = findViewById(R.id.txt_cadastre);
+        txtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
