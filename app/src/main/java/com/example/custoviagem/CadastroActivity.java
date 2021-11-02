@@ -16,7 +16,7 @@ import com.example.custoviagem.database.model.UsuarioModel;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText cadastroUsuario, cadastroSenha;
+    private EditText cadastroUsuario, cadastroSenha, confirmarSenha;
     private Button btnConfirmarCadastro;
     private TextView txtVoltar;
     private UsuarioDAO daoCadastro;
@@ -32,6 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
         // Cria os componentes.
         cadastroUsuario = findViewById(R.id.cadastroUsuario);
         cadastroSenha = findViewById(R.id.cadastroSenha);
+        confirmarSenha = findViewById(R.id.confirmarSenha);
 
         // Faz o SELECT e entra no aplicativo.
         btnConfirmarCadastro = findViewById(R.id.btnConfirmarCadastro);
@@ -39,17 +40,36 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                UsuarioModel model = new UsuarioModel();
-                model.setUsuario(cadastroUsuario.getText().toString());
-                model.setSenha(cadastroSenha.getText().toString());
-
-                if (daoCadastro.Insert(model) != -1) {
-                    Toast.makeText(CadastroActivity.this, "Usuário Cadastrado!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(CadastroActivity.this, LoginActivity.class));
-                } else {
-                    Toast.makeText(CadastroActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
+                //Verifica se os campos estão vazios
+                if(cadastroUsuario.getText().toString().equals("")){
+                    Toast.makeText(CadastroActivity.this, "Campo Usuário é Obrigatório, Tente novamente!", Toast.LENGTH_LONG).show();
+                }
+                else if(cadastroSenha.getText().toString().equals("")){
+                    Toast.makeText(CadastroActivity.this, "Campo senha é Obrigatório, Tente novamente!", Toast.LENGTH_LONG).show();
+                }
+                else if(confirmarSenha.getText().toString().equals("")){
+                    Toast.makeText(CadastroActivity.this, "Campo confirmação de senha é Obrigatório, Tente novamente!", Toast.LENGTH_LONG).show();
                 }
 
+                //Verifica se o campo senha é diferente do campo confirmação de senha
+                else if(cadastroSenha.getText().toString() != confirmarSenha.getText().toString()){
+                    Toast.makeText(CadastroActivity.this, "Senhas informadas não conferem, Tente Novamente!", Toast.LENGTH_LONG).show();
+                }
+
+                //Caso valide verficações pressegue com o insert do usuario no BD
+                else{
+                    UsuarioModel model = new UsuarioModel();
+                    model.setUsuario(cadastroUsuario.getText().toString());
+                    model.setSenha(cadastroSenha.getText().toString());
+
+                    // Valida erro ao fazer o INSERT
+                    if (daoCadastro.Insert(model) != -1) {
+                        Toast.makeText(CadastroActivity.this, "Usuário Cadastrado!", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(CadastroActivity.this, LoginActivity.class));
+                    } else {
+                        Toast.makeText(CadastroActivity.this, "Ocorreu um erro!", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 

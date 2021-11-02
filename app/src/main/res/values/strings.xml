@@ -28,4 +28,9 @@
     <string name="para_onde">Para onde</string>
     <string name="listar">Listar</string>
     <string name="lista_Destino">DESTINO CALCULADOS</string>
+    <string name="forgot_senha">Esqueceu a senha?</string>
+    <string name="login_google">ou conectar-se usando</string>
+    <string name="Check_save_dados">Salvar dados de login</string>
+    <string name="lbl_cadastro">Não tem uma conta?</string>
+    <string name="btn_cadastrar"> Cadastre-se</string>
 </resources>

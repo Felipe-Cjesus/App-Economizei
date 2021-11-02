@@ -48,25 +48,39 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(check_login.isChecked()){
-                    shared.put(Shared.COLUNA_USUARIO, editUsuario.getText().toString());
-                    shared.put(Shared.COLUNA_SENHA, editSenha.getText().toString());
-                } else {
-                    shared.remove(Shared.COLUNA_USUARIO);
-                    shared.remove(Shared.COLUNA_SENHA);
-                }
 
-                UsuarioModel model = dao.Select(editUsuario.getText().toString(), editSenha.getText().toString());
-                if (model != null) {
-                    Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LoginActivity.this, Lista_Destinos_Activity.class));
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Usuário ou senha incorreto! Tente novamente!", Toast.LENGTH_LONG).show();
+                //Verifica se os campos estão vazios
+                if(editUsuario.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, "Campo Usuario é Obrigatório!, Tente novamente!", Toast.LENGTH_LONG).show();
+                } else if(editSenha.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, "Campo Senha é Obrigatório!, Tente novamente!", Toast.LENGTH_LONG).show();
+                } else{
+
+                    // Verifica o check para salvar ou remover os dados usando o SharedPreferences
+                    if(check_login.isChecked()){
+                        shared.put(Shared.COLUNA_USUARIO, editUsuario.getText().toString());
+                        shared.put(Shared.COLUNA_SENHA, editSenha.getText().toString());
+                    } else {
+                        shared.remove(Shared.COLUNA_USUARIO);
+                        shared.remove(Shared.COLUNA_SENHA);
+                    }
+
+                    // Faz o Select para encontrar o usuario no db
+                    UsuarioModel model = dao.Select(editUsuario.getText().toString(), editSenha.getText().toString());
+
+                    // Validação de usuario e senha
+                    if (model != null) {
+                        Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(LoginActivity.this, Lista_Destinos_Activity.class));
+                    }
+                    else {
+                        Toast.makeText(LoginActivity.this, "Usuário ou senha incorreto! Tente novamente!", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
 
+        // Popula os campos usando o Shared
         editUsuario.setText(shared.getString(Shared.COLUNA_USUARIO));
         editSenha.setText(shared.getString(Shared.COLUNA_SENHA));
 
