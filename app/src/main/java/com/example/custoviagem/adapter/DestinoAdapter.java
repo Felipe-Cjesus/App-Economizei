@@ -42,7 +42,7 @@ public class DestinoAdapter extends BaseAdapter {
         origem.setText("De: "+lista.get(position).getOrigem());
 
         TextView destino  = convertView.findViewById(R.id.txt_Destinos);
-        destino.setText("Pra: "+lista.get(position).getDestino());
+        destino.setText("Para: "+lista.get(position).getDestino());
 
         TextView valor = convertView.findViewById(R.id.txtValorTotal);
         valor.setText("R$ "+lista.get(position).getCustoTotalViagem());
